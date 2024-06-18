@@ -5,6 +5,7 @@ import com.example.MongoDb_SB.model.User;
 import com.example.MongoDb_SB.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
@@ -32,6 +33,12 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
         List<User> users = userService.findAll();
         List<UserDto> usersDto = users.stream().map(x -> new UserDto(x)).collect(Collectors.toList());
         return ResponseEntity.ok().body(usersDto);
+    }
+
+    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
+    public ResponseEntity<UserDto> findById(@PathVariable String id) {
+        User obj = userService.findById(id);
+        return ResponseEntity.ok().body(new UserDto(obj));
     }
 
 }
