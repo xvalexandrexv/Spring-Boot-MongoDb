@@ -1,5 +1,6 @@
 package com.example.MongoDb_SB.web;
 
+import com.example.MongoDb_SB.Dto.UserDto;
 import com.example.MongoDb_SB.model.User;
 import com.example.MongoDb_SB.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -9,6 +10,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
+import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/users") // caminho do endpoint no browser
@@ -19,7 +21,7 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
     private UserService userService;
 
     @RequestMapping(method = RequestMethod.GET) //este vai ser um metodo que pode/vai ser usado do endpoint users no browser  e o metodo rest a ser usado que vai ser usado é o GET
-    public ResponseEntity<List<User>> findAll() {
+    public ResponseEntity<List<UserDto>> findAll() {
 
         // OBS: isto funciona como e por camadas vou agora refracturar o codigo para que converse com o serviço
         //User maria = new User("1", "Maria Brown", "maria@gmail.com");
@@ -28,8 +30,8 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
         // users.addAll(Arrays.asList(maria, alex));
 
         List<User> users = userService.findAll();
-
-        return ResponseEntity.ok().body(users);
+        List<UserDto> usersDto = users.stream().map(x -> new UserDto(x)).collect(Collectors.toList());
+        return ResponseEntity.ok().body(usersDto);
     }
 
 }

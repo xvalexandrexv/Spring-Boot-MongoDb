@@ -13,16 +13,18 @@ public class User implements Serializable {
     private String id;
     private String name;    
     private String email;
+    private String pass;
 
 
     public User() {
 
     }
 
-    public User(String id, String name, String email) {
+    public User(String id, String name, String email, String pass) {
         this.id = id;
         this.name = name;
         this.email = email;
+        this.pass = pass;
     }
 
     public String getId() {
@@ -47,6 +49,14 @@ public class User implements Serializable {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public String getPass() {
+        return pass;
+    }
+
+    public void setPass(String pass) {
+        this.pass = pass;
     }
 
     @Override
