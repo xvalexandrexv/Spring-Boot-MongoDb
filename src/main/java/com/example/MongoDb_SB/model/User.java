@@ -1,13 +1,19 @@
-package com.example.MongoDb_SB.domain;
+package com.example.MongoDb_SB.model;
+
+import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
 import java.util.Objects;
 
+@Document(collection = "user") // opcionalmente podemos difinir o nome da coleçao de banco
 public class User implements Serializable {
 
+    @Id
     private String id;
-    private String name;
+    private String name;    
     private String email;
+
 
     public User() {
 
