@@ -1,5 +1,6 @@
 package com.example.MongoDb_SB.services;
 
+import com.example.MongoDb_SB.Dto.UserDto;
 import com.example.MongoDb_SB.model.User;
 import com.example.MongoDb_SB.repository.UserRepository;
 import com.example.MongoDb_SB.services.serviceException.ObjectNotFoundException;
@@ -27,6 +28,14 @@ public class UserService {
         } else {
             throw new ObjectNotFoundException("Obj not found");
         }
+    }
+
+    public User insert(User user) {
+        return userRepository.insert(user);
+    }
+
+    public User fromDto(UserDto objDto) {
+        return new User(objDto.getId(), objDto.getName(), objDto.getEmail(), null);
     }
 
 }

@@ -1,4 +1,4 @@
-package com.example.MongoDb_SB.web;
+package com.example.MongoDb_SB.web.exceptions;
 
 import java.io.Serializable;
 
@@ -53,5 +53,13 @@ public class StandardError implements Serializable {
 
     public void setPath(String path) {
         this.path = path;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 }

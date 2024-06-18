@@ -1,4 +1,4 @@
-package com.example.MongoDb_SB.web;
+package com.example.MongoDb_SB.web.exceptions;
 
 import com.example.MongoDb_SB.services.serviceException.ObjectNotFoundException;
 import jakarta.servlet.http.HttpServletRequest;
