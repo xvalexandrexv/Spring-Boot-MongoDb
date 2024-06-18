@@ -56,4 +56,10 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
         return ResponseEntity.created(uri).build();
     }
 
+    @RequestMapping(value = "/{id}", method = RequestMethod.DELETE)
+    public ResponseEntity<Void> delete(@PathVariable String id) {
+        userService.delete(id);
+        return ResponseEntity.noContent().build(); // para retornar uma resposta 204
+    }
+
 }
