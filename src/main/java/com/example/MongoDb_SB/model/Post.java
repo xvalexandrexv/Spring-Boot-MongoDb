@@ -1,5 +1,6 @@
 package com.example.MongoDb_SB.model;
 
+import com.example.MongoDb_SB.Dto.AuthorDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
@@ -15,13 +16,18 @@ public class Post implements Serializable {
     private Date date;
     private String title;
     private String body;
-    private User author;
+    /* private User author; //  podia ter ficado o user so que nos nao queremos no construtor o User pois o user
+    possui demasiados atributos logo criamos praticamente um Dto de User chamado
+    AuthorDto onde apresentamos so os atributod que queremos neste caso so o nome */
+
+    private AuthorDto author;
 
     public Post() {
 
     }
 
-    public Post(String id, Date date, String title, String body, User author) {
+    public Post(String id, Date date, String title, String body, AuthorDto author) { //
+
         this.id = id;
         this.date = date;
         this.title = title;
@@ -61,11 +67,11 @@ public class Post implements Serializable {
         this.body = body;
     }
 
-    public User getAuthor() {
+    public AuthorDto getAuthor() {
         return author;
     }
 
-    public void setAuthor(User author) {
+    public void setAuthor(AuthorDto author) {
         this.author = author;
     }
 

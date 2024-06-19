@@ -61,8 +61,6 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
         return ResponseEntity.noContent().build(); // para retornar uma resposta 204
     }
 
-
-
     @RequestMapping(value="/{id}", method=RequestMethod.PUT)
     public ResponseEntity<Void> update(@RequestBody UserDto objDto, @PathVariable String id) {
         User obj = userService.fromDto(objDto);
