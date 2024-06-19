@@ -6,10 +6,6 @@ import java.io.Serializable;
 
 public class UserDto implements Serializable {
 
-    // obj de tranferencia de dados como podemos ver aqui uma das vantagens
-    // o User tem 4 atributos mas so vou fazer um DTO com 3 atributos a serem
-    // apredentados, apesar de que la na base de dados estejam os 4 atributos
-    // mas para o usuario so vou apresentar 3.
 
     private String id;
     private String name;

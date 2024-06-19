@@ -19,9 +19,6 @@ public class Post implements Serializable {
     private Date date;
     private String title;
     private String body;
-    /* private User author; //  podia ter ficado o user so que nos nao queremos no construtor o User pois o user
-    possui demasiados atributos logo criamos praticamente um Dto de User chamado
-    AuthorDto onde apresentamos so os atributod que queremos neste caso so o nome */
 
     private AuthorDto author;
 

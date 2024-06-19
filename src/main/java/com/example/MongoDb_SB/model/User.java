@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Objects;
 
-@Document(collection = "user") // opcionalmente podemos difinir o nome da coleçao de banco
+@Document(collection = "user")
 public class User implements Serializable {
 
     @Id
@@ -18,7 +18,7 @@ public class User implements Serializable {
     private String email;
     private String pass;
 
-    @DBRef(lazy = true) // o lazy true serve para limitar o carregamento de dados dos atributos Post, assim so carregar se eu explecitamente acessalos
+    @DBRef(lazy = true)
     private List<Post> posts = new ArrayList<>();
 
 

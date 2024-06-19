@@ -36,7 +36,7 @@ public class UserService {
 
 
     public void delete(String id) {
-        findById(id); // aproveitamento do codigo em cima, caso o Id passado nao exista lança um exceçao.
+        findById(id);
         userRepository.deleteById(id);
     }
 

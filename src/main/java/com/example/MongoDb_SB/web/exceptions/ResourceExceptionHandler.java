@@ -7,7 +7,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
-@ControllerAdvice // classe responsavel por tratar possiveis erros nas requisiçoes
+@ControllerAdvice
 public class ResourceExceptionHandler {
 
     @ExceptionHandler(ObjectNotFoundException.class)
