@@ -1,9 +1,12 @@
 package com.example.MongoDb_SB.model;
 
 import org.springframework.data.annotation.Id;
+import org.springframework.data.mongodb.core.mapping.DBRef;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Objects;
 
 @Document(collection = "user") // opcionalmente podemos difinir o nome da coleçao de banco
@@ -14,6 +17,9 @@ public class User implements Serializable {
     private String name;    
     private String email;
     private String pass;
+
+    @DBRef(lazy = true) // o lazy true serve para limitar o carregamento de dados dos atributos Post, assim so carregar se eu explecitamente acessalos
+    private List<Post> posts = new ArrayList<>();
 
 
     public User() {
@@ -57,6 +63,13 @@ public class User implements Serializable {
 
     public void setPass(String pass) {
         this.pass = pass;
+    }
+
+    public List<Post> getPosts() {
+        return posts;
+    }
+    public void setPosts(List<Post> posts) {
+        this.posts = posts;
     }
 
     @Override

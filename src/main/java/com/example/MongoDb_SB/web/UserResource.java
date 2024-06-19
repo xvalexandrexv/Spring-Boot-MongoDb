@@ -1,6 +1,7 @@
 package com.example.MongoDb_SB.web;
 
 import com.example.MongoDb_SB.Dto.UserDto;
+import com.example.MongoDb_SB.model.Post;
 import com.example.MongoDb_SB.model.User;
 import com.example.MongoDb_SB.services.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -67,6 +68,12 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
         obj.setId(id);
         obj = userService.update(obj);
         return ResponseEntity.noContent().build();
+    }
+
+    @RequestMapping(value = "/{id}/posts", method = RequestMethod.GET)
+    public ResponseEntity<List<Post>> findPosts(@PathVariable String id) {
+        User obj = userService.findById(id);
+        return ResponseEntity.ok().body(obj.getPosts());
     }
 
 }
