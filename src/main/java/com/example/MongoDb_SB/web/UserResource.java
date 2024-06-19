@@ -11,7 +11,6 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 import java.net.URI;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 @RestController
 @RequestMapping(value = "/users") // caminho do endpoint no browser
@@ -60,6 +59,16 @@ public class UserResource {     // OBS: endpoint é o caminho que vamos buscar s
     public ResponseEntity<Void> delete(@PathVariable String id) {
         userService.delete(id);
         return ResponseEntity.noContent().build(); // para retornar uma resposta 204
+    }
+
+
+
+    @RequestMapping(value="/{id}", method=RequestMethod.PUT)
+    public ResponseEntity<Void> update(@RequestBody UserDto objDto, @PathVariable String id) {
+        User obj = userService.fromDto(objDto);
+        obj.setId(id);
+        obj = userService.update(obj);
+        return ResponseEntity.noContent().build();
     }
 
 }

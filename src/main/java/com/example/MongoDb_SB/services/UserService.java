@@ -21,9 +21,9 @@ public class UserService {
     }
 
     public User findById(String id) {
-        Optional<User> userOptional = userRepository.findById(id);
 
-        if(userOptional.isPresent()) {
+         Optional<User> userOptional = userRepository.findById(id);
+   if(userOptional.isPresent()) {
             return userOptional.get();
         } else {
             throw new ObjectNotFoundException("Obj not found");
@@ -38,6 +38,17 @@ public class UserService {
     public void delete(String id) {
         findById(id); // aproveitamento do codigo em cima, caso o Id passado nao exista lança um exceçao.
         userRepository.deleteById(id);
+    }
+
+    public User update(User obj) {
+        User newObj = findById(obj.getId());
+        updateData(newObj, obj);
+        return userRepository.save(newObj);
+    }
+
+    private void updateData(User newObj, User obj) {
+        newObj.setName(obj.getName());
+        newObj.setEmail(obj.getEmail());
     }
 
     public User fromDto(UserDto objDto) {
