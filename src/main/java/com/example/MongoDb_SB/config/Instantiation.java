@@ -1,6 +1,7 @@
 package com.example.MongoDb_SB.config;
 
 import com.example.MongoDb_SB.Dto.AuthorDto;
+import com.example.MongoDb_SB.Dto.CommentDto;
 import com.example.MongoDb_SB.model.Post;
 import com.example.MongoDb_SB.model.User;
 import com.example.MongoDb_SB.repository.PostRepository;
@@ -42,6 +43,13 @@ public class Instantiation implements CommandLineRunner {
         Post post1 = new Post(null, sdf.parse("21/03/2018"), "Partiu Viagem", "Vou partir para São Paulo. Abraços!", new AuthorDto(maria));
         Post post2 = new Post(null, sdf.parse("23/03/2018"), "Bom dia", "Acordei feliz!", new AuthorDto(maria));
         // assim criamos um post com uma copia do objeto maria la na base de dados
+
+        CommentDto c1 = new CommentDto("Boa viagem mano!", sdf.parse("21/10/2018"), new AuthorDto(alex));
+        CommentDto c2 = new CommentDto("Aprobeite!", sdf.parse("23/10/2018"), new AuthorDto(bob));
+        CommentDto c3 = new CommentDto("Tenho um optimo dia", sdf.parse("24/10/2018"), new AuthorDto(alex));
+
+        post1.getCommentDto().addAll(Arrays.asList(c1, c2));
+        post2.getCommentDto().addAll(Arrays.asList(c3));
 
         // userRepository.saveAll(Arrays.asList(maria, alex, bob, soja)); temos que guardar os usuarios primeiro senao o id vai ficar null
         postRepository.saveAll(Arrays.asList(post1, post2));

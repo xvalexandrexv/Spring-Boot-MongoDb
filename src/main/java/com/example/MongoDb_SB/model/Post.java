@@ -1,11 +1,14 @@
 package com.example.MongoDb_SB.model;
 
 import com.example.MongoDb_SB.Dto.AuthorDto;
+import com.example.MongoDb_SB.Dto.CommentDto;
 import org.springframework.data.annotation.Id;
 import org.springframework.data.mongodb.core.mapping.Document;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 import java.util.Objects;
 
 @Document // vai ser uma coleçao ou documento
@@ -21,6 +24,9 @@ public class Post implements Serializable {
     AuthorDto onde apresentamos so os atributod que queremos neste caso so o nome */
 
     private AuthorDto author;
+
+    private List<CommentDto> commentDto = new ArrayList<>();
+
 
     public Post() {
 
@@ -73,6 +79,14 @@ public class Post implements Serializable {
 
     public void setAuthor(AuthorDto author) {
         this.author = author;
+    }
+
+    public List<CommentDto> getCommentDto() {
+        return commentDto;
+    }
+
+    public void setCommentDtos(List<CommentDto> commentDto) {
+        this.commentDto = commentDto;
     }
 
     @Override
